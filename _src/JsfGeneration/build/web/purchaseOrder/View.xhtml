@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPurchaseOrderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPurchaseOrderLabel_orderNum}"/>
+                    <h:outputText value="#{purchaseOrderController.selected.orderNum}" title="#{bundle.ViewPurchaseOrderTitle_orderNum}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderLabel_quantity}"/>
+                    <h:outputText value="#{purchaseOrderController.selected.quantity}" title="#{bundle.ViewPurchaseOrderTitle_quantity}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderLabel_shippingCost}"/>
+                    <h:outputText value="#{purchaseOrderController.selected.shippingCost}" title="#{bundle.ViewPurchaseOrderTitle_shippingCost}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderLabel_salesDate}"/>
+                    <h:outputText value="#{purchaseOrderController.selected.salesDate}" title="#{bundle.ViewPurchaseOrderTitle_salesDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderLabel_shippingDate}"/>
+                    <h:outputText value="#{purchaseOrderController.selected.shippingDate}" title="#{bundle.ViewPurchaseOrderTitle_shippingDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderLabel_freightCompany}"/>
+                    <h:outputText value="#{purchaseOrderController.selected.freightCompany}" title="#{bundle.ViewPurchaseOrderTitle_freightCompany}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderLabel_productId}"/>
+                    <h:outputText value="#{purchaseOrderController.selected.productId}" title="#{bundle.ViewPurchaseOrderTitle_productId}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderLabel_customerId}"/>
+                    <h:outputText value="#{purchaseOrderController.selected.customerId}" title="#{bundle.ViewPurchaseOrderTitle_customerId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{purchaseOrderController.destroyAndView}" value="#{bundle.ViewPurchaseOrderDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPurchaseOrderEditLink}"/>
+                <br />
+                <h:commandLink action="#{purchaseOrderController.prepareCreate}" value="#{bundle.ViewPurchaseOrderCreateLink}" />
+                <br />
+                <h:commandLink action="#{purchaseOrderController.prepareList}" value="#{bundle.ViewPurchaseOrderShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPurchaseOrderIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

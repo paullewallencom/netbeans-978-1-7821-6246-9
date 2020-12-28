@@ -1,0 +1,1 @@
+modified getCustomerCriteriaAPI() method to use the JPA criteria API.

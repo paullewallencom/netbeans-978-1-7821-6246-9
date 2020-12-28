@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="addrType" class="java.lang.String" required="true"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h3>#{cc.attrs.addrType} Address</h3>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="line1" value="Address Line 1"/> <h:inputText id="line1" value="#{customer.address.line1}"/>
+            <h:outputLabel for="line2" value="Address Line 2"/> <h:inputText id="line2" value="#{customer.address.line2}"/>
+            <h:outputLabel for="city" value="City"/> <h:inputText id="city" value="#{customer.address.city}"/>
+            <h:outputLabel for="state" value="State"/> <h:inputText id="state" value="#{customer.address.state}"/>
+            <h:outputLabel for="zip" value="Zip Code"/> <h:inputText id="zip" value="#{customer.address.zip}"/>
+        </h:panelGrid>
+    </cc:implementation>
+</html>

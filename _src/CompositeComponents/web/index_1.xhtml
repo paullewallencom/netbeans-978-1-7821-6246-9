@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ezcomp="http://java.sun.com/jsf/composite/ezcomp">
+    <h:head>
+        <title>Input</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:messages/>
+            <h:panelGrid columns="2">
+                <h:outputLabel for="firstName" value="First Name"/><h:inputText id="firstName" value="#{customer.firstName}" required="true">
+                    <f:validateLength maximum="10"/>
+                </h:inputText>
+                <h:outputLabel for="lastName" value="Last Name"/><h:inputText id="lastName" value="#{customer.lastName}"  required="true"/>
+                <h:outputLabel for="age" value="Age"/><h:inputText id="age" value="#{customer.age}">
+                    <f:validateLongRange minimum="0" maximum="100" />
+                </h:inputText>
+            </h:panelGrid>
+            <ezcomp:address addrType="Home"/>
+            <ezcomp:address addrType="Work"/>
+            <h:commandButton value="Submit" action="#{customerController.navigate()}"/>
+        </h:form>
+    </h:body>
+</html>
+

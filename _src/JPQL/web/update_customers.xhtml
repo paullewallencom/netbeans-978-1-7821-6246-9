@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Add Customer</title>
+    </h:head>
+    <h:body>
+        <h:messages/>
+        <h:form>
+            <h:panelGrid columns="1">
+                <h:commandButton value="Insert Temporary Customers" action="#{customerController.insertTemporaryCustomers()}"/>
+                <h:panelGroup/>
+                <h:commandButton value="Update Temporary Customers" action="#{customerController.updateTemporaryCustomers()}"/>
+                <h:panelGroup/>
+                <h:commandButton value="Delete Temporary Customers" action="#{customerController.deleteTemporaryCustomers()}"/>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

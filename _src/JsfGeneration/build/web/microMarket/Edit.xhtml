@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMicroMarketTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMicroMarketLabel_zipCode}" for="zipCode" />
+                    <h:inputText id="zipCode" value="#{microMarketController.selected.zipCode}" title="#{bundle.EditMicroMarketTitle_zipCode}" required="true" requiredMessage="#{bundle.EditMicroMarketRequiredMessage_zipCode}"/>
+                    <h:outputLabel value="#{bundle.EditMicroMarketLabel_radius}" for="radius" />
+                    <h:inputText id="radius" value="#{microMarketController.selected.radius}" title="#{bundle.EditMicroMarketTitle_radius}" />
+                    <h:outputLabel value="#{bundle.EditMicroMarketLabel_areaLength}" for="areaLength" />
+                    <h:inputText id="areaLength" value="#{microMarketController.selected.areaLength}" title="#{bundle.EditMicroMarketTitle_areaLength}" />
+                    <h:outputLabel value="#{bundle.EditMicroMarketLabel_areaWidth}" for="areaWidth" />
+                    <h:inputText id="areaWidth" value="#{microMarketController.selected.areaWidth}" title="#{bundle.EditMicroMarketTitle_areaWidth}" />
+                </h:panelGrid>
+                <h:commandLink action="#{microMarketController.update}" value="#{bundle.EditMicroMarketSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditMicroMarketViewLink}"/>
+                <br />
+                <h:commandLink action="#{microMarketController.prepareList}" value="#{bundle.EditMicroMarketShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditMicroMarketIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

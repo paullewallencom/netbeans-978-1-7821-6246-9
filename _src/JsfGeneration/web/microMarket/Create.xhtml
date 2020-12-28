@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMicroMarketTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMicroMarketLabel_zipCode}" for="zipCode" />
+                    <h:inputText id="zipCode" value="#{microMarketController.selected.zipCode}" title="#{bundle.CreateMicroMarketTitle_zipCode}" required="true" requiredMessage="#{bundle.CreateMicroMarketRequiredMessage_zipCode}"/>
+                    <h:outputLabel value="#{bundle.CreateMicroMarketLabel_radius}" for="radius" />
+                    <h:inputText id="radius" value="#{microMarketController.selected.radius}" title="#{bundle.CreateMicroMarketTitle_radius}" />
+                    <h:outputLabel value="#{bundle.CreateMicroMarketLabel_areaLength}" for="areaLength" />
+                    <h:inputText id="areaLength" value="#{microMarketController.selected.areaLength}" title="#{bundle.CreateMicroMarketTitle_areaLength}" />
+                    <h:outputLabel value="#{bundle.CreateMicroMarketLabel_areaWidth}" for="areaWidth" />
+                    <h:inputText id="areaWidth" value="#{microMarketController.selected.areaWidth}" title="#{bundle.CreateMicroMarketTitle_areaWidth}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{microMarketController.create}" value="#{bundle.CreateMicroMarketSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{microMarketController.prepareList}" value="#{bundle.CreateMicroMarketShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMicroMarketIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

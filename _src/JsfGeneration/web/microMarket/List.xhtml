@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMicroMarketTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMicroMarketEmpty}" rendered="#{microMarketController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{microMarketController.items.rowCount > 0}">
+                    <h:outputText value="#{microMarketController.pagination.pageFirstItem + 1}..#{microMarketController.pagination.pageLastItem + 1}/#{microMarketController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{microMarketController.previous}" value="#{bundle.Previous} #{microMarketController.pagination.pageSize}" rendered="#{microMarketController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{microMarketController.next}" value="#{bundle.Next} #{microMarketController.pagination.pageSize}" rendered="#{microMarketController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{microMarketController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMicroMarketTitle_zipCode}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.zipCode}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMicroMarketTitle_radius}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.radius}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMicroMarketTitle_areaLength}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.areaLength}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMicroMarketTitle_areaWidth}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.areaWidth}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{microMarketController.prepareView}" value="#{bundle.ListMicroMarketViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{microMarketController.prepareEdit}" value="#{bundle.ListMicroMarketEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{microMarketController.destroy}" value="#{bundle.ListMicroMarketDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{microMarketController.prepareCreate}" value="#{bundle.ListMicroMarketCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMicroMarketIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
